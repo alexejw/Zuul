@@ -1,0 +1,42 @@
+#!/bin/bash
+#
+#       /etc/rc.d/init.d/
+#
+#
+#
+#
+#
+
+# Source function library.
+
+
+
+start() {
+        echo -n "Starting : zuul-webconfig"
+		cd /home/pi	
+		./webconfig.py > ./logfile.log &
+        return
+}
+
+stop() {
+        echo -n "Shutting down : zuul-webconfig"
+		kill -INT 888
+        return
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+
+        ;;
+    restart)
+        stop
+        start
+        ;;
+esac
+exit $?
